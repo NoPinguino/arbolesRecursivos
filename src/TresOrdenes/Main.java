@@ -5,7 +5,7 @@ public class Main {
         ArbolBinario arbol = new ArbolBinario();
 
         // Insertar valores en el árbol
-        System.out.println("Insertando valores: 50, 30, 70, 20, 40, 60, 80");
+        //System.out.println("Insertando valores: 50, 30, 70, 20, 40, 60, 80");
         arbol.insertarNodo(5);
         arbol.insertarNodo(2);
         arbol.insertarNodo(1);
@@ -18,8 +18,21 @@ public class Main {
 
         System.out.println("\nRecorridos del árbol:");
 
-        arbol.recorridoPostorden(); // Izquierda -> Derecha -> Raíz
-        arbol.recorridoInOrder();
-        arbol.recorridoPreorden();
+        arbol.recorridoPostorden(); // Uso PostOrder() para las pruebas, usa el recorrido que más te guste :)
+        System.out.println();
+
+        if(!arbol.buscarNodo(15))
+            System.out.println("El valor 15 NO se ha encontrado.");
+        arbol.recorridoPostorden();
+        System.out.println();
+
+        arbol.insertarNodo(15);
+        if(arbol.buscarNodo(15))
+            System.out.println("El valor 15 se ha encontrado.");
+        arbol.recorridoPostorden();
+        System.out.println();
+
+        arbol.delete(12);
+        arbol.recorridoPostorden(); //Como puedes ver, elimina el valor 12 del árbol.
     }
 }

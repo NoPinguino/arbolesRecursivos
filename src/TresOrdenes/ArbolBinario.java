@@ -24,20 +24,56 @@ class ArbolBinario {
         return nodo;
     }
 
-    // Método para buscar un valor en el BST
+    // Método para buscar un valor en el árbol
     public boolean buscarNodo(int value) {
         return buscarRecursivo(raiz, value);
     }
-    private boolean buscarRecursivo(Nodo raiz, int value) {
-        if (raiz == null) {
+    private boolean buscarRecursivo(Nodo nodo, int value) {
+        if (nodo == null) {
             return false;
         }
-        if (raiz.dato == value) {
+        if (nodo.dato == value) {
             return true;
         }
-        return value < raiz.dato
-                ? buscarRecursivo(raiz.izquierdo, value)
-                : buscarRecursivo(raiz.derecho, value);
+        return value < nodo.dato ? buscarRecursivo(nodo.izquierdo, value) : buscarRecursivo(nodo.derecho, value);
+    }
+
+    // Método para eliminar un nodo en el árbol
+    public void delete(int value) {
+        raiz = deleteRec(raiz, value);
+    }
+    private Nodo deleteRec(Nodo nodo, int value) {
+        if (nodo == null) {
+            return null;
+        }
+        if (value < nodo.dato) {
+            nodo.izquierdo = deleteRec(nodo.izquierdo, value);
+        } else if (value > nodo.dato) {
+            nodo.derecho = deleteRec(nodo.derecho, value);
+        } else {
+            // Caso 1: nodo sin hijos
+            if (nodo.izquierdo == null && nodo.derecho == null) {
+                return null;
+            }
+            // Caso 2: un solo hijo
+            else if (nodo.izquierdo == null) {
+                return nodo.derecho;
+            } else if (nodo.derecho == null) {
+                return nodo.izquierdo;
+            }
+            // Caso 3: dos hijos -> buscar el sucesor (mínimo del subárbol derecho)
+            nodo.dato = minValue(nodo.derecho);
+            nodo.derecho = deleteRec(nodo.derecho, nodo.dato);
+        }
+        return nodo;
+    }
+    private int minValue(Nodo nodo) {
+        int minv = nodo.dato;
+        while (nodo.izquierdo != null) {
+            minv = nodo.izquierdo.dato;
+            nodo = nodo.izquierdo;
+        }
+        return minv;
     }
 
     // POST ORDER
