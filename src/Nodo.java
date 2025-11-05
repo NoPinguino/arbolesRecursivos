@@ -1,5 +1,3 @@
-package TresOrdenes;
-
 class Nodo {
     int dato;
     Nodo izquierdo;

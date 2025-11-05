@@ -1,5 +1,3 @@
-package TresOrdenes;
-
 //Clase principal del Árbol
 class ArbolBinario {
     Nodo raiz;
