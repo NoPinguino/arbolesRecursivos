@@ -36,6 +36,32 @@ public class Arbol {
         recorrerPreOrderRecursivo(n.der);
     }
 
+    // Recorrido in-order:
+    public void recorrerInOrder() {
+        System.out.print("Recorreido in-order: ");
+        recorrerInOrderRecursivo(raiz);
+        System.out.println(); // Salto de linea
+    }
+    private void recorrerInOrderRecursivo(Nodo n) {
+        if (n == null) return;
+        recorrerInOrderRecursivo(n.izq);
+        System.out.print(n.dato + " ");
+        recorrerInOrderRecursivo(n.der);
+    }
+
+    // Recorrido post-order:
+    public void recorrerPostOrder() {
+        System.out.print("Recorreido post-order: ");
+        recorrerPostOrderRecursivo(raiz);
+        System.out.println(); // Salto de linea
+    }
+    private void recorrerPostOrderRecursivo(Nodo n) {
+        if (n == null) return;
+        recorrerPostOrderRecursivo(n.izq);
+        recorrerPostOrderRecursivo(n.der);
+        System.out.print(n.dato + " ");
+    }
+
     // Eliminación de un nodo [DIFÍCIL]:
     public void eliminarLanzadera(int valor) {
         this.raiz = eliminarRecursivo(raiz, valor);
