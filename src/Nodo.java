@@ -1,11 +1,11 @@
-class Nodo {
-    int dato;
-    Nodo izquierdo;
-    Nodo derecho;
+public class Nodo {
+    int dato; // Dato de this nodo
+    Nodo izq; // Hijo izquierdo
+    Nodo der; // Hijo derecho
 
-    public Nodo(int valor) {
-        this.dato = valor;
-        this.izquierdo = null;
-        this.derecho = null;
+    public Nodo(int dato) {
+        this.izq = null;
+        this.der = null;
+        this.dato = dato;
     }
 }

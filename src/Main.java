@@ -1,44 +1,51 @@
-//Clase de prueba con main
-void main() {
-    ArbolBinario arbol = new ArbolBinario();
+public class Main {
+    public static void main(String[] args) {
+        Arbol a = new Arbol();
 
-    // Insertar valores en el árbol
-    //System.out.println("Insertando valores: 50, 30, 70, 20, 40, 60, 80");
-    arbol.insertarNodo(5);
-    arbol.insertarNodo(2);
-    arbol.insertarNodo(1);
-    arbol.insertarNodo(3);
-    arbol.insertarNodo(12);
-    arbol.insertarNodo(9);
-    arbol.insertarNodo(21);
-    arbol.insertarNodo(19);
-    arbol.insertarNodo(25);
+        // Inserciones
+        a.insertarLanzadera(50);
+        a.insertarLanzadera(30);
+        a.insertarLanzadera(70);
+        a.insertarLanzadera(20);
+        a.insertarLanzadera(40);
+        a.insertarLanzadera(60);
+        a.insertarLanzadera(80);
 
-    IO.println("\nRecorridos del árbol:");
+        System.out.println("¿Existe 10?: " + a.buscarLanzadera(10));
+        System.out.println("¿Existe 80?: " + a.buscarLanzadera(80));
 
-    /*
-    Imprimo árbol original:
-     */
-    arbol.recorridoPostorden(); // Uso PostOrder() para las pruebas, usa el recorrido que más te guste :)
-    IO.println();
+        a.recorrerPreOrder();
 
-    /*
-    Busco 15 en el árbol, si no está, lo añado. Imprimo el árbol al terminar.
-     */
-    if (!arbol.buscarNodo(15)) {
-        IO.println("El valor 15 NO se ha encontrado.");
-        IO.println("Insertando 15 en el árbol...");
-        arbol.insertarNodo(15);
-    } else {
-        IO.println("El valor 15 se ha encontrado.");
+        System.out.println("¿Es estricto el árbol?: " + a.estrictoLanzadera());
+        System.out.println("Altura del árbol: " + a.alturaLanzadera());
+        System.out.println("Valor máximo del árbol: " + a.maximoLanzadera());
+        System.out.println("Número de nodos en árbol: " + a.numNodosLanzadera());
+        System.out.println("Número de hojas en árbol: " + a.numHojasLanzadera());
+        System.out.println("Sumatorio: " + a.sumatorioLanzadera());
+        System.out.println("Sumatorio de nodos con valor par: " + a.sumatorioParesLanzadera());
+        System.out.println("Sumatorio de nodos internos: " + a.sumatorioInternosLanzadera());
+
+        Arbol b = new Arbol();
+        // Mismas inserciones que A
+        b.insertarLanzadera(50);
+        b.insertarLanzadera(30);
+        b.insertarLanzadera(70);
+        b.insertarLanzadera(20);
+        b.insertarLanzadera(40);
+        b.insertarLanzadera(60);
+        b.insertarLanzadera(80);
+
+        Arbol c = new Arbol();
+        // Inserciones diferentes
+        c.insertarLanzadera(50);
+        c.insertarLanzadera(30);
+        c.insertarLanzadera(70);
+        c.insertarLanzadera(20);
+        c.insertarLanzadera(45);  // Diferente: 45 vs 40
+        c.insertarLanzadera(60);
+        c.insertarLanzadera(80);
+
+        System.out.println("¿Son identicos A y B?: " + a.sonIdenticosLanzadera(b));
+        System.out.println("¿Son identicos A y C?: " + a.sonIdenticosLanzadera(c));
     }
-    arbol.recorridoPostorden();
-    IO.println();
-
-    /*
-    Elimino 15 del árbol y hago una última impresión.
-     */
-    IO.println("Eliminando 15 de el árbol...");
-    arbol.delete(15);
-    arbol.recorridoPostorden(); //Como puedes ver, elimina el valor 12 del árbol.
 }
